@@ -13,11 +13,15 @@ kef.append(b)  # гальмування перед Землею
 
 gallon = 0  # сума топлива
 
-if 1 in kef:
-    print(-1)
-else:
+try:
     for i in kef[::-1]:
         k = (M + gallon) / (i - 1)
         gallon += k
+except ZeroDivisionError:
+    gallon = -1
 
-    print(gallon)
+for i in kef:
+    if i <= 1:
+        gallon = -1
+
+print(gallon)
